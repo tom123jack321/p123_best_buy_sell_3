@@ -2,7 +2,8 @@
 My solution to Leetcode problem "123. Best Time to Buy and Sell Stock III"
 
 1. Description
-See https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/ or below for description of the problem. The problem is hard in that at most two transactions are allowed, unlike previous "buy and sell stock" problems.
+See https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/ or below. 
+The problem is marked "Hard".
 
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 Find the maximum profit you can achieve. You may complete at most two transactions.
@@ -15,6 +16,7 @@ Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-
 Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4
 
 2. My solution
+The problem is hard in that at most two transactions are allowed, unlike previous "buy and sell stock" problems.
 The first step is to find the (globally) largest increment among the entire array and the beginning and end location of the increment (returned by function "profit_2" as vector {p_max,c_max, d_max}). The array is split into 3 segments, namely the one before "c_max", the one between "c_max" and "d_max" (both includingly) and the one after "d_max". The required (at most) largest 2 increment should appear near the two locations ("c_max" the beginning location, "d_max" the end location), so the second and third steps are to find the largest increment among the segments before "c_max" and after "d_max" respectively. So far, the function "profit_2" is invoked 3 times. Pick up the 2 largest increments found.
 Then comes the 4th step that searches the largest increment among location "c_max" and "d_max - 1" (both includingly). Likewise the 5th and 6th steps searching among the segments before and after ther segment produced in 4th step.
 Finally the 7th step searching the largest increment among location "c_max + 1" and "d_max" (both includingly). Likewise the 8th and 9th steps searching among the segments before and after ther segment prodeced in 7th step.
